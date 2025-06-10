@@ -41,7 +41,7 @@ ELSEIF p0001-werks = '8017' OR p0001-werks = '80A0'.
           OR '8825' OR '8500' OR '8A50'.
           YMIN = YMIN + RT_WA-BETRG.
   ENDCASE.
-" orther
+" other
 ELSE.
     CASE RT_WA-LGART.
       WHEN '8100' OR '8300' OR '8400' OR '8755' OR '8415' 
