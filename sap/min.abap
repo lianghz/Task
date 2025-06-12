@@ -22,8 +22,8 @@ ELSEIF p0001-werks = '8050' OR p0001-werks = '8051' OR p0001-werks = '8052'.
           YMIN = YMIN + RT_WA-BETRG.
   ENDCASE.
 
-" GX:80D0
-ELSEIF p0001-werks = '80D0'.
+" GX:80D0\80N0
+ELSEIF p0001-werks = '80D0' OR p0001-werks = '80N0'.
   CASE RT_WA-LGART.
     WHEN '/101' OR '8800'.
           YMIN = YMIN + RT_WA-BETRG.
