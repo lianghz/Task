@@ -1,0 +1,52 @@
+    {  
+    	"TXCRTBATX": [  
+            {  
+    			"BATNAM": "批次名称",  
+    			"DURTAX": "202205",  
+    			"INCTYP": "1",  
+    			"INCITE": "01",  
+    			"USLSPE": "N",  
+    			"CALIMD": "Y",  
+    			"BUSNBR": "66666666"  
+            } 
+        ],  
+    	"TXSTFSALX": [  
+            {  
+    			"STFNAM": "测试人",  
+    			"STFSEQ": "TAX000000000002",  
+    			"CERTYP": "A",  
+    			"CERNBR": "330102199201011183",  
+    			"REGSEQ": "10117440185713003912-001",  
+    			"REVCOU": "10000",  
+    			"CRMSSD": "100",  
+    			"JBYLBX": "100",  
+    			"JBYIBX": "100",  
+    			"SYVXYE": "100",  
+    			"ZFGJJY": "100",  
+    			"LJYYEF": "100",
+
+            } , 
+            {  
+    			"STFNAM": "测试人2",  
+    			"STFSEQ": "TAX000000000002",  
+    			"CERTYP": "A",  
+    			"CERNBR": "330102199201011183",  
+    			"REGSEQ": "10117440185713003912-001",  
+    			"REVCOU": "10000",  
+    			"CRMSSD": "100",  
+    			"JBYLBX": "100",  
+    			"JBYIBX": "100",  
+    			"SYVXYE": "100",  
+    			"ZFGJJY": "100",  
+    			"LJYYEF": "100",  
+
+            } 
+        ],  
+    	"TXREGPWDX": [  
+            {  
+    			"REGSEQ": "10117440185713003912-001",  
+    			"PWDTYP": "0",  
+    			"DCLPWD": "Aa123456"  
+            }  
+        ]  
+    }  

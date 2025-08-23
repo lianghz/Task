@@ -24,19 +24,39 @@
   ENDLOOP.
 
   * <-OHR-3026 LIYG 20250716 Begin
-* 调整 基本养老保险费、基本医疗保险费、失业保险费、住房公积金，为负数则变为0
+* 调整 基本养老保险费、基本医疗保险费、失业保险费、住房公积金，为负数则，先加入到本期收入中，然后再变为0
   IF ps_output-insurance_pen LT 0.
+    ps_output-income_cur = ps_output-income_cur - ps_output-insurance_pen.
     ps_output-insurance_pen = 0.
   ENDIF.
   IF ps_output-insurance_med LT 0.
+    ps_output-income_cur = ps_output-income_cur - ps_output-insurance_med.
     ps_output-insurance_med = 0.
   ENDIF.
   IF ps_output-insurance_une LT 0.
+    ps_output-income_cur = ps_output-income_cur - ps_output-insurance_une.
     ps_output-insurance_une = 0.
   ENDIF.
   IF ps_output-fund_house LT 0.
+    ps_output-income_cur = ps_output-income_cur - ps_output-fund_house.
     ps_output-fund_house = 0.
   ENDIF.
+*如果 本期收入是小于0，变为0
+  IF ps_output-income_cur LT 0.
+    ps_output-income_cur = 0.
+  ENDIF.
+
+
+  FORM field_fund_house USING ps_rt         TYPE pc207
+                   CHANGING pv_fund_house TYPE pc207-betrg.
+
+* IF ps_rt-lgart = '/362' OR ps_rt-lgart = '8745' OR ps_rt-lgart = '/368'. " OHR-3026(2) LIYG 20250801 注释
+  IF ps_rt-lgart = '/362' OR ps_rt-lgart = '8745'.                         " OHR-3026(2) LIYG 20250801 Mark
+    pv_fund_house = pv_fund_house + ps_rt-betrg.
+  ENDIF.
+
+ENDFORM.
+
 * ->OHR-3026 LIYG 20250716 End
 
 
@@ -58,19 +78,38 @@
 
 " ENDFORM.
 
-FORM field_income_cur USING ps_rt         TYPE pc207
-                   CHANGING pv_income_cur TYPE pc207-betrg.
+" FORM field_income_cur USING ps_rt         TYPE pc207
+"                    CHANGING pv_income_cur TYPE pc207-betrg.
 
-    IF ps_rt-lgart = '/101' OR ps_rt-lgart = '8910' OR ps_rt-lgart = '8900' OR
-        ps_rt-lgart = '/405' OR ps_rt-lgart = '/368' OR ps_rt-lgart = '8350'.
-        pv_income_cur = pv_income_cur + ps_rt-betrg.
-    ENDIF.
+"     IF ps_rt-lgart = '/101' OR ps_rt-lgart = '8910' OR ps_rt-lgart = '8900' OR
+"         ps_rt-lgart = '/405' OR ps_rt-lgart = '/368' OR ps_rt-lgart = '8350'.
+"         pv_income_cur = pv_income_cur + ps_rt-betrg.
+"     ENDIF.
 
-    IF ps_rt-lgart = '8221' OR ps_rt-lgart = '8241' OR ps_rt-lgart = '8280' OR
-        ps_rt-lgart = '8500' OR ps_rt-lgart = '8125' OR ps_rt-lgart = '8510' OR
-        ps_rt-lgart = '/313' OR ps_rt-lgart = '8705' OR ps_rt-lgart = '/333' OR
-        ps_rt-lgart = '8725' OR ps_rt-lgart = '8650' OR ps_rt-lgart = '/323' OR
-        ps_rt-lgart = '8715' OR ps_rt-lgart = '/362' OR ps_rt-lgart = '8745'.
-        pv_income_cur = pv_income_cur - ps_rt-betrg.
-    ENDIF.
-ENDFORM.
+"     IF ps_rt-lgart = '8221' OR ps_rt-lgart = '8241' OR ps_rt-lgart = '8280' OR
+"         ps_rt-lgart = '8500' OR ps_rt-lgart = '8125' OR ps_rt-lgart = '8510'.
+"         pv_income_cur = pv_income_cur - ps_rt-betrg.
+"     ENDIF.
+
+" ENDFORM.
+
+" * <-OHR-3026 LIYG 20250716 Begin
+" * 调整 基本养老保险费、基本医疗保险费、失业保险费、住房公积金，为负数则变为0
+"   IF ps_output-insurance_pen LT 0.
+"     ps_output-insurance_pen = 0.
+"   ENDIF.
+"   IF ps_output-insurance_med LT 0.
+"     ps_output-insurance_med = 0.
+"   ENDIF.
+"   IF ps_output-insurance_une LT 0.
+"     ps_output-insurance_une = 0.
+"   ENDIF.
+"   IF ps_output-fund_house LT 0.
+"     ps_output-fund_house = 0.
+"   ENDIF.
+
+
+
+        " ps_rt-lgart = '/313' OR ps_rt-lgart = '8705' OR ps_rt-lgart = '/333' OR
+        " ps_rt-lgart = '8725' OR ps_rt-lgart = '8650' OR ps_rt-lgart = '/323' OR
+        " ps_rt-lgart = '8715' OR ps_rt-lgart = '/362' OR ps_rt-lgart = '8745'.
