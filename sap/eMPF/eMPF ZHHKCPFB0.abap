@@ -1,4 +1,6 @@
-  IF $method EQ 'E'.                   "for exist member
+" 旧报表 PC00_M27_CPFB 供款金额计算代码段
+
+IF $method EQ 'E'.                   "for exist member
     LOOP AT rt.
 *      IF rt-lgart = l_basis.           "revelant income
 *        mpf_amount-basis = mpf_amount-basis + rt-betrg.

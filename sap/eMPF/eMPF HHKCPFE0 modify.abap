@@ -44,7 +44,7 @@ FORM collect_paid_mpf_amount .
   ENDLOOP.
 ENDFORM.
 
-" 
+" 解决次月调整没有加上调整金额的问题
 FORM collect_unpaid_mpf_amount .
   DATA: prcl_69_val(1) TYPE n,
         d_ermwt        LIKE i7hk2b-ermwt,

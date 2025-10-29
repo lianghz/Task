@@ -1,3 +1,5 @@
+" 新报表供款金额代码段 PC00_M27_CPFE
+
 FORM collect_paid_mpf_amount .
   DATA: l_betrg        LIKE pc207-betrg,
         l_flag,
