@@ -1,8 +1,10 @@
-*>>>>> OHR-3035 begin
+
+
+*>>>>> OHR-XXXX begin
   DATA: BJD1 TYPE     betpe,
         BJD2 TYPE     betpe,
         BJD3 TYPE     betpe.
-*<<<<< OHR-3035 end    
+*<<<<< OHR-XXXX end    
     
     WHEN 'NJ20'.
 
